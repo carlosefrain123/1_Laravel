@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * php artisan make:controller ProductController --resource
+     * Comando3: php artisan make:controller ProductController --resource
      */
     public function index()
     {
