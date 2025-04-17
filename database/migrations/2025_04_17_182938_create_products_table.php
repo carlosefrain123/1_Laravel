@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * php artisan make:migration create_products_table --create=products
+     * Luego: php artisan migrate
+     * php artisan make:model Product
+     *
      */
     public function up(): void
     {
