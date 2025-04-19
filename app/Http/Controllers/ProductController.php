@@ -10,57 +10,67 @@ class ProductController extends Controller
     /**
      * Comando3: php artisan make:controller ProductController --resource
      */
+
+     //Obtener todos los productos
     public function index()
     {
+        //Obtener todos los productos
         $products=Product::all();
+        //Retornar la vista 'products.index' con la lista de productos
         return view('products.index',compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        //Retornar la vista product.create
+        return view('products.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        //Validar Formulario
+        $request->validate([
+            'name'=>'required',
+            'price'=>'required|numeric',
+            'description'=>'required',
+        ]);
+        //Crear un nuevo productos con los datos validados
+        Product::create($request->all());
+        //Redirigir a la lista de roductos con un mensaje de exito
+        return redirect()->route('products.index')->with('success','Producto creado');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        //
+        //Retornar la vista 'products.show' con el producto especificado
+        return view('products.show',compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        //Retornar la vista 'products.edit' con el producto especificado para editar
+        return view('products.edit',compact('products'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        //Validar Formulario
+        $request->validate([
+            'name'=>'required',
+            'price'=>'required|numeric',
+            'description'=>'required',
+        ]);
+        //Actualizar el producto con los datos validados
+        $product->update($request->all());
+        //Redirigir a la lista de productos con un mensaje de éxito
+        return redirect()->route('products.index')->with('success','Producto Actualizado');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        //Eliminar el producto especificado
+        $product->delete();
+        //Redirigir a la lista de productos con un mensaje de exito
+        return redirect()->route('products.index')->with('success','Producto Eliminado');
     }
 }
