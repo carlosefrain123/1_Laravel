@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\ProductController;
+//La App, siempre con mayuscula
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
