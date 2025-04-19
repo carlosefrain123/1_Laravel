@@ -47,10 +47,10 @@ class ProductController extends Controller
         return view('products.show',compact('product'));
     }
 
-    public function edit(string $id)
+    public function edit(Product $product)
     {
         //Retornar la vista 'products.edit' con el producto especificado para editar
-        return view('products.edit',compact('products'));
+        return view('products.edit',compact('product'));
     }
 
     public function update(Request $request, Product $product)
