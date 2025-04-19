@@ -10,7 +10,7 @@
 
 <body>
     <h1>Listado de productos</h1>
-    <a href="{{route('products.create')}}">Nuevo Registro</a>
+    <a href="{{ route('products.create') }}">Nuevo Registro</a>
     <table>
         <tr>
             <th>id</th>
@@ -20,10 +20,23 @@
         </tr>
         @foreach ($products as $product)
             <tr>
-                <td>{{$product->id}}</td>
-                <td>{{$product->name}}</td>
-                <td>{{$product->price}}</td>
-                <td>{{$product->description}}</td>
+                <td>{{ $product->id }}</td>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->price }}</td>
+                <td>{{ $product->description }}</td>
+                <td>
+                    <a href="{{route('products.show',$product->id)}}">Mostrar</a>
+                </td>
+                <td>
+                    <a href="{{route('products.edit',$product->id)}}">Editar</a>
+                </td>
+                <td>
+                    <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>
