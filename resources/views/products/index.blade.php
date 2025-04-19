@@ -10,6 +10,7 @@
 
 <body>
     <h1>Listado de productos</h1>
+    <a href="{{route('products.create')}}">Nuevo Registro</a>
     <table>
         <tr>
             <th>id</th>
