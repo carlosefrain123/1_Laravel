@@ -1,5 +1,5 @@
 Primer comando:
--composer create-proyect --prefer-dist laravel/laravel curso-crud
+-composer create-project --prefer-dist laravel/laravel curso-crud
 
 Segundo Comando: Se crea la migración o tabla productos
 -php artisan make:migration create_products_table --create=products
