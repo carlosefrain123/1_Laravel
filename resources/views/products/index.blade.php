@@ -15,7 +15,7 @@
         </div><!-- end card header -->
 
         <div class="card-body">
-            <p class="text-muted">Use <code>table</code> class to show bootstrap-based default table.</p>
+            <p class="text-muted"><code><strong><a href="{{route('products.create')}}">Agregar Producto</a></strong></code></p>
             <div class="live-preview">
                 <div class="table-responsive">
                     <table class="table align-middle table-nowrap">
@@ -42,15 +42,20 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <button type="button"
+                                        <a href="{{route('products.edit',$product->id)}}">
+                                            <button type="button"
                                             class="btn rounded-pill btn-secondary waves-effect waves-light"><i
                                                 class="ri-edit-fill"></i></button>
+                                        </a>
                                     </td>
                                     <td>
-                                        <button type="button"
+                                        <form action="{{route('products.destroy',$product->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
                                             class="btn rounded-pill btn-danger waves-effect waves-light"><i
-                                                class=" ri-delete-bin-fill
-"></i></button>
+                                                class=" ri-delete-bin-fill"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
