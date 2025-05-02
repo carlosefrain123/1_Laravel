@@ -10,8 +10,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     <!-- Layout config Js -->
     <script src="{{ asset('assets/js/layout.js') }}"></script>
     <!-- Bootstrap Css -->
@@ -58,6 +57,13 @@
 
                             </div>
                         </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @yield('content')
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- end page title -->
 
@@ -65,11 +71,7 @@
                 <!-- container-fluid -->
             </div>
             <!-- End Page-content -->
-            <div class="row">
-                <div class="col-lg-12">
-                    @yield('content')
-                </div>
-            </div>
+
             @include('layouts.footer')
         </div>
         <!-- end main content-->
@@ -97,7 +99,6 @@
     <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}></script>
     <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}></script>
     <script src="{{ asset('assets/js/plugins.js') }}></script>
-
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}></script>
 </body>
