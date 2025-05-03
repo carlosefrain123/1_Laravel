@@ -15,14 +15,32 @@
         </div><!-- end card header -->
 
         <div class="card-body">
-            <p class="text-muted"><a href="{{route('products.index')}}"><strong>Inicio</strong></a></p>
+            <p class="text-muted"><a href="{{ route('products.index') }}"><strong>Inicio</strong></a></p>
             @if ($errors->any())
-                <p class="text-muted">Upps</p>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
+                <!-- Danger Alert -->
+                <div class="alert alert-danger alert-dismissible alert-additional fade show" role="alert">
+                    <div class="alert-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                                <i class="ri-error-warning-line fs-16 align-middle"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="alert-heading">Upps!</h5>
+                                {{-- <p class="mb-0">Change a few things up and try submitting again. </p> --}}
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert-content">
+                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and
+                            tidy.</p>
+                    </div>
+                </div>
             @endif
             <div class="live-preview">
                 <form action="{{ route('products.store') }}" method="post">
@@ -47,8 +65,8 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="compnayNameinput" class="form-label">Descripción</label>
-                                <input type="text" class="form-control" name="description" placeholder="Ingrese su descripción"
-                                    id="compnayNameinput">
+                                <input type="text" class="form-control" name="description"
+                                    placeholder="Ingrese su descripción" id="compnayNameinput">
                             </div>
                         </div>
                         <!--end col-->
